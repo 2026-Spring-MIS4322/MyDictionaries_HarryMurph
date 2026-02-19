@@ -207,3 +207,17 @@ ProduceDictionary={
     }
 }
 
+for produce, details in ProduceDictionary.items(): #loops through the dictionary, unpacking the key into produce and the value into details
+    cost = details.get('cost')#gets the cost from the details dictionary for the current produce
+    amt_sold = details.get('amt_sold')#gets the amount sold from the details dictionary for the current produce
+    stated_total = details.get('total')#gets the stated total from the details dictionary for the current produce
+
+    # Calculate total
+    calculated_total = cost * amt_sold
+
+    # Compare rounded values (money = 2 decimals)
+    if round(calculated_total, 2) != round(stated_total, 2):#if the rounded calculated total does not equal the rounded stated total, then there is a discrepancy
+        print(f"Produce: {produce}")#print the name of the produce with the discrepancy
+        print(f"  Stated total:     ${stated_total:.2f}")# print the stated total from the dictionary, formatted to 2 decimal places
+        print(f"  Calculated total: ${calculated_total:.2f}")# print the calculated total, formatted to 2 decimal places
+        print("-" * 40)
